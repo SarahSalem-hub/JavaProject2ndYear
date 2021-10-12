@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import sun.util.calendar.CalendarDate;
 
@@ -37,8 +38,26 @@ public class Test{
         System.out.println("Enter the place:");
         String place =s.nextLine();
         System.out.println("Enter The specific Date:");
-           LocalDate date =LocalDate.of(s.nextInt(),s.nextInt(),s.nextInt());
+        LocalDate date ;
+        while(true) {
+            try {
+                date = LocalDate.of(s.nextInt(), s.nextInt(), s.nextInt());
+               // System.out.println("here");
+                break;
 
+            } catch (InputMismatchException e) {
+                if (true) {
+                   // System.out.println("here1");
+                    //System.out.println(e);
+                    System.out.println("\t\t --please enter a certain Date--");
+                    s.next();
+                }
+                else
+                    break;
+            }
+        }
+
+       // date = LocalDate.of(s.nextInt(), s.nextInt(), s.nextInt());
         System.out.println("Enter the time :hh mm ss :");
 
             LocalTime time=LocalTime.of(s.nextInt(),s.nextInt(),s.nextInt());
